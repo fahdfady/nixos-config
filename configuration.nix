@@ -11,7 +11,7 @@
     ];
 
   # Bootloader.
-  boot.loader.systemd-boot.enable = true;
+  boot.loader.systemd-boot.enable =   true;
   boot.loader.efi.canTouchEfiVariables = true;
 
   networking.hostName = "nixos"; # Define your hostname.
@@ -84,7 +84,7 @@ hardware.firmware = with pkgs; [
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
- enable = true;
+    enable = true;
     alsa.enable = true;    # ALSA integration
     pulse.enable = true;   # PulseAudio compatibility
     jack.enable = true;    # JACK support (for pro-audio)
@@ -130,15 +130,27 @@ hardware.firmware = with pkgs; [
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-  discord 
-  appimage-run 
-  git
-  vscode
-  arandr
-#  jetbrains.clion
-  ];
+  # apps
+    discord 
+    vscode
+    # jetbrains.clion
+    appimage-run 
+    arandr
+
+  # cli
+    git
+    gh
+  
+  # compilers / languages
+    rustup
+    rustc
+    go
+    cargo
+    gcc  
+
   #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
   #  wget
+  ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
